@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Field Notes on Climate Change — Think and Grow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E2B25; --ink-soft:#4B584F;
+  --paper:#F5F1E6; --paper-raised:#ECE3CB; --paper-card:#FBF8F0;
+  --moss:#2C6E5B; --moss-deep:#1B4E40; --moss-tint:#DCE9DF;
+  --amber:#A15F16; --amber-tint:#F1E0BE;
+  --rust:#9C3A22; --rust-tint:#F1DCCF;
+  --sky:#38607A; --sky-tint:#DCE7EC;
+  --line:#D9CFB0;
+  --focus:#A15F16;
+  --shadow: none;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#EAE5D6; --ink-soft:#BEB79E;
+    --paper:#141C18; --paper-raised:#1D2721; --paper-card:#1A231E;
+    --moss:#7FC7AC; --moss-deep:#4E9A7E; --moss-tint:#203129;
+    --amber:#E3A855; --amber-tint:#31281A;
+    --rust:#E08768; --rust-tint:#33221C;
+    --sky:#8FC1DC; --sky-tint:#1B2A31;
+    --line:#33403A;
+    --focus:#E3A855;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#EAE5D6; --ink-soft:#BEB79E;
+  --paper:#141C18; --paper-raised:#1D2721; --paper-card:#1A231E;
+  --moss:#7FC7AC; --moss-deep:#4E9A7E; --moss-tint:#203129;
+  --amber:#E3A855; --amber-tint:#31281A;
+  --rust:#E08768; --rust-tint:#33221C;
+  --sky:#8FC1DC; --sky-tint:#1B2A31;
+  --line:#33403A;
+  --focus:#E3A855;
+  color-scheme: dark;
+}
+:root[data-theme="light"]{ color-scheme: light; }
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{
+  scroll-padding-top: calc(env(safe-area-inset-top,0px) + 12px);
+}
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Sans 3", system-ui, sans-serif;
+  font-size: 17px;
+  line-height:1.55;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  -webkit-text-size-adjust:100%;
+}
+[data-fontsize="large"] body, body[data-fontsize="large"]{ font-size:19.5px; }
+h1,h2,h3,h4{
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  line-height:1.15;
+  margin:0 0 .5em;
+  color:var(--ink);
+}
+p{ margin:0 0 1em; max-width:66ch; }
+a{ color:var(--moss-deep); }
+:root[data-theme="dark"] a, .theme-dark a{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) a{ color:var(--moss); } }
+a:not(.button){ text-underline-offset:.15em; }
+ul,ol{ padding-left:1.25em; }
+img,svg{ max-width:100%; }
+button{ font-family:inherit; }
+
+:focus{ outline:none; }
+:focus-visible{
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+
+.skip-link{
+  position:fixed; top:-100px; left:12px; z-index:200;
+  background:var(--ink); color:var(--paper); padding:.75em 1.1em;
+  border-radius: var(--radius-sm); font-weight:600; text-decoration:none;
+}
+.skip-link:focus{ top: calc(env(safe-area-inset-top,0px) + 12px); }
+
+/* ---------- Shell layout ---------- */
+.shell{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  min-height:100%;
+}
+.railbar{
+  border-right:1px solid var(--line);
+  padding: 1.6rem 1.3rem;
+  position:sticky; top:0;
+  align-self:start;
+  height:100vh; height:100dvh;
+  display:flex; flex-direction:column;
+  overflow-y:auto;
+}
+.brand{
+  display:flex; align-items:center; gap:.6em;
+  margin-bottom: 1.6rem;
+  text-decoration:none;
+}
+.brand-mark{ flex:none; display:block; }
+.brand-text{
+  font-family:"Fraunces", serif; font-weight:600; font-size:1.05rem; color:var(--ink); line-height:1.15;
+}
+.brand-text span{ display:block; font-family:"Source Sans 3",sans-serif; font-weight:600; font-size:.68rem; letter-spacing:.02em; color:var(--ink-soft); margin-top:.15em; }
+
+.mainnav{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.15rem; }
+.mainnav a{
+  display:flex; align-items:center; gap:.65em;
+  padding:.6em .6em .6em .7em;
+  text-decoration:none; color:var(--ink-soft);
+  border-left:3px solid transparent;
+  font-weight:600; font-size:.98rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.mainnav a:hover{ background:var(--paper-raised); color:var(--ink); }
+.mainnav a[aria-current="page"]{
+  color:var(--moss-deep); border-left-color:var(--moss);
+  background:var(--moss-tint);
+}
+:root[data-theme="dark"] .mainnav a[aria-current="page"], .theme-dark .mainnav a[aria-current="page"]{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .mainnav a[aria-current="page"]{ color:var(--moss); } }
+.mainnav .ico{ width:1.15em; height:1.15em; flex:none; }
+
+.rail-tools{ margin-top:auto; padding-top:1.2rem; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:.6rem; }
+.rail-tools p{ font-size:.78rem; color:var(--ink-soft); margin:0 0 .3em; font-weight:600; }
+.toolbtns{ display:flex; gap:.4rem; flex-wrap:wrap; }
+.toolbtn{
+  border:1px solid var(--line); background:var(--paper-card); color:var(--ink);
+  padding:.4em .7em; border-radius: var(--radius-sm); cursor:pointer; font-size:.82rem; font-weight:600;
+}
+.toolbtn[aria-pressed="true"]{ background:var(--moss); border-color:var(--moss); color:var(--paper); }
+
+.topbar{ display:none; }
+
+main{ min-width:0; }
+.page{ display:none; padding: 2.6rem clamp(1.2rem, 4vw, 3.4rem) 4rem; max-width: 980px; }
+.page.is-active{ display:block; }
+.eyebrow{ color:var(--moss-deep); font-weight:700; font-size:.85rem; margin-bottom:.5em; }
+:root[data-theme="dark"] .eyebrow{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .eyebrow{ color:var(--moss); } }
+.page h1{ font-size:clamp(2rem, 4vw, 2.9rem); max-width:16ch; }
+.lede{ font-size:1.15rem; color:var(--ink-soft); max-width:58ch; }
+
+.section-block{ margin-top:2.6rem; }
+.section-block h2{ font-size:1.5rem; }
+.hr{ border:none; border-top:1px solid var(--line); margin:2.6rem 0; }
+
+/* ---------- Hero (home) ---------- */
+.hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap:2.5rem; align-items:center;
+  margin-bottom: 1rem;
+}
+.hero-copy h1{ font-size:clamp(2.1rem,4.4vw,3.3rem); }
+.stat-row{ display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.8rem; }
+.stat{ min-width:9rem; }
+.stat b{ display:block; font-family:"Fraunces",serif; font-size:2.1rem; font-weight:600; color:var(--moss-deep); line-height:1; }
+:root[data-theme="dark"] .stat b{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .stat b{ color:var(--moss); } }
+.stat span{ font-size:.85rem; color:var(--ink-soft); }
+.hero-note{ font-size:.85rem; color:var(--ink-soft); margin-top:1.6rem; max-width:52ch; border-left:2px solid var(--line); padding-left:.9em; }
+
+.card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:1.8rem; }
+.route-card{
+  border:1px solid var(--line); background:var(--paper-card); padding:1.2rem;
+  border-radius: var(--radius-md); text-decoration:none; color:var(--ink); display:block;
+}
+.route-card:hover{ border-color:var(--moss); }
+.route-card h3{ font-size:1.05rem; margin-bottom:.3em; }
+.route-card p{ font-size:.9rem; color:var(--ink-soft); margin:0; }
+
+/* ---------- generic content blocks ---------- */
+.two-col{ display:grid; grid-template-columns: 1fr 1fr; gap:1.4rem; }
+.info-card{ border:1px solid var(--line); background:var(--paper-card); border-radius:var(--radius-md); padding:1.3rem 1.4rem; }
+.info-card h3{ font-size:1.05rem; }
+.info-card p{ font-size:.94rem; margin-bottom:0; }
+.figure-num{ font-family:"Fraunces",serif; font-size:2.4rem; font-weight:600; color:var(--amber); line-height:1; display:block; margin-bottom:.15em; }
+.dl-list dt{ font-weight:700; margin-top:1em; }
+.dl-list dd{ margin:0 0 0; color:var(--ink-soft); }
+
+/* ---------- Greenhouse diagram (Causes) ---------- */
+.greenhouse-wrap{
+  border:1px solid var(--line); border-radius:var(--radius-md); background:var(--paper-card);
+  padding:1.4rem; margin-top:1.6rem;
+}
+.greenhouse-grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:1.6rem; align-items:start; }
+.gh-svg-box{ border-radius: var(--radius-sm); overflow:hidden; background: linear-gradient(180deg, var(--sky-tint), var(--paper-card) 78%); }
+.hotspots{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.hotspot-btn{
+  width:100%; text-align:left; display:flex; align-items:center; gap:.7em;
+  border:1px solid var(--line); background:var(--paper); color:var(--ink);
+  padding:.7em .9em; border-radius:var(--radius-sm); cursor:pointer; font-weight:600; font-size:.95rem;
+}
+.hotspot-btn .dot{ width:.8em; height:.8em; border-radius:50%; flex:none; }
+.hotspot-btn[aria-pressed="true"]{ border-color: var(--moss); background:var(--moss-tint); }
+.gh-panel{ margin-top:1rem; padding-top:1rem; border-top:1px solid var(--line); font-size:.95rem; color:var(--ink-soft); min-height:4.5em; }
+.gh-panel strong{ color:var(--ink); display:block; margin-bottom:.25em; font-family:"Fraunces",serif; font-size:1.05rem; font-weight:600; }
+.gh-fade{ opacity:.35; transition:opacity .2s ease; }
+.gh-active{ opacity:1; }
+
+/* ---------- Tabs (Causes) ---------- */
+.tablist{ display:flex; gap:.4rem; flex-wrap:wrap; border-bottom:1px solid var(--line); margin-top:2rem; }
+.tab{
+  border:1px solid var(--line); border-bottom:none; background:var(--paper);
+  padding:.6em 1em; border-radius: var(--radius-sm) var(--radius-sm) 0 0; cursor:pointer; font-weight:600; color:var(--ink-soft);
+  transform:translateY(1px);
+}
+.tab[aria-selected="true"]{ background:var(--paper-card); color:var(--ink); border-bottom:1px solid var(--paper-card); }
+.tabpanel{ display:none; padding-top:1.4rem; }
+.tabpanel.is-active{ display:block; }
+.tabpanel .stat-mini{ font-family:"Fraunces",serif; font-size:1.6rem; color:var(--moss-deep); font-weight:600; }
+:root[data-theme="dark"] .tabpanel .stat-mini{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tabpanel .stat-mini{ color:var(--moss); } }
+
+/* ---------- Timeline (Effects) ---------- */
+.timeline-box{ border:1px solid var(--line); border-radius:var(--radius-md); background:var(--paper-card); padding:1.5rem; margin-top:1.6rem; }
+.timeline-readout{ display:flex; align-items:baseline; gap:.8rem; margin-bottom:1rem; }
+.timeline-readout b{ font-family:"Fraunces",serif; font-size:2.6rem; color:var(--rust); font-weight:600; }
+.timeline-readout span{ color:var(--ink-soft); }
+input[type="range"]{ width:100%; accent-color: var(--moss-deep); height:1.6rem; }
+.timeline-scale{ display:flex; justify-content:space-between; font-size:.78rem; color:var(--ink-soft); margin-top:.3rem; }
+.timeline-bars{ display:flex; align-items:flex-end; gap:3px; height:70px; margin-top:1.4rem; }
+.timeline-bars i{ flex:1; background:var(--line); border-radius:1px 1px 0 0; display:block; }
+.timeline-bars i.on{ background:var(--rust); }
+.timeline-desc{ margin-top:1.2rem; font-size:.95rem; }
+
+/* ---------- Accordion ---------- */
+.accordion{ margin-top:1.6rem; border-top:1px solid var(--line); }
+.acc-item{ border-bottom:1px solid var(--line); }
+.acc-trigger{
+  width:100%; text-align:left; background:none; border:none; cursor:pointer;
+  padding:1em .2em; display:flex; justify-content:space-between; align-items:center; gap:1em;
+  font-family:"Fraunces",serif; font-size:1.12rem; font-weight:600; color:var(--ink);
+}
+.acc-trigger .plus{ flex:none; width:1.3em; height:1.3em; position:relative; }
+.acc-trigger .plus::before, .acc-trigger .plus::after{ content:""; position:absolute; background:var(--moss-deep); }
+:root[data-theme="dark"] .acc-trigger .plus::before, :root[data-theme="dark"] .acc-trigger .plus::after{ background:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .acc-trigger .plus::before, :root:not([data-theme="light"]) .acc-trigger .plus::after{ background:var(--moss); } }
+.acc-trigger .plus::before{ left:0; top:50%; width:100%; height:2px; transform:translateY(-50%); }
+.acc-trigger .plus::after{ top:0; left:50%; height:100%; width:2px; transform:translateX(-50%); }
+.acc-trigger[aria-expanded="true"] .plus::after{ display:none; }
+.acc-panel{ display:none; padding:0 .2em 1.3em; color:var(--ink-soft); }
+.acc-panel.is-open{ display:block; }
+.acc-panel p{ margin-bottom:.6em; }
+
+/* ---------- Action checklist ---------- */
+.plan-box{ border:1px solid var(--line); border-radius:var(--radius-md); background:var(--paper-card); padding:1.5rem; margin-top:1.6rem; }
+.plan-header{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+.plan-score{ font-family:"Fraunces",serif; font-size:1.15rem; }
+.plan-score b{ color:var(--moss-deep); }
+:root[data-theme="dark"] .plan-score b{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .plan-score b{ color:var(--moss); } }
+.plan-groups{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+.plan-group h3{ font-size:1rem; margin-bottom:.6em; }
+.plan-item{ display:flex; align-items:flex-start; gap:.6em; margin-bottom:.6em; font-size:.94rem; }
+.plan-item input{ margin-top:.3em; width:1.1em; height:1.1em; accent-color:var(--moss-deep); flex:none; }
+.plan-reset{ margin-top:1.2rem; }
+
+/* ---------- Buttons ---------- */
+.button{
+  display:inline-flex; align-items:center; gap:.5em; text-decoration:none;
+  background:var(--moss-deep); color:#F7F4E9; border:1px solid var(--moss-deep);
+  padding:.65em 1.2em; border-radius:var(--radius-sm); font-weight:700; cursor:pointer; font-size:.95rem;
+}
+.button:hover{ background:var(--moss); border-color:var(--moss); }
+.button.secondary{ background:transparent; color:var(--ink); border-color:var(--line); }
+.button.secondary:hover{ border-color:var(--ink-soft); }
+:root[data-theme="dark"] .button{ color:#12201A; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .button{ color:#12201A; } }
+
+/* ---------- Quiz ---------- */
+.quiz-box{ border:1px solid var(--line); border-radius:var(--radius-md); background:var(--paper-card); padding:1.6rem; margin-top:1.6rem; }
+.quiz-progress{ font-size:.85rem; color:var(--ink-soft); font-weight:600; margin-bottom:.6rem; }
+.quiz-q{ font-family:"Fraunces",serif; font-size:1.3rem; font-weight:600; margin-bottom:1rem; }
+.quiz-choices{ list-style:none; margin:0 0 1rem; padding:0; display:flex; flex-direction:column; gap:.55rem; }
+.quiz-choice{
+  width:100%; text-align:left; border:1px solid var(--line); background:var(--paper);
+  padding:.75em .9em; border-radius:var(--radius-sm); cursor:pointer; font-size:.97rem; color:var(--ink);
+}
+.quiz-choice:hover{ border-color:var(--ink-soft); }
+.quiz-choice.correct{ border-color:var(--moss-deep); background:var(--moss-tint); font-weight:700; }
+.quiz-choice.incorrect{ border-color:var(--rust); background:var(--rust-tint); }
+.quiz-choice[disabled]{ cursor:default; }
+.quiz-feedback{ font-size:.94rem; padding-top:.3rem; }
+.quiz-feedback .verdict{ font-weight:700; display:block; margin-bottom:.2em; }
+.quiz-actions{ margin-top:1.2rem; display:flex; gap:.7rem; }
+.quiz-result{ text-align:center; padding:1rem 0; }
+.quiz-result .figure-num{ font-size:3rem; color:var(--moss-deep); }
+:root[data-theme="dark"] .quiz-result .figure-num{ color:var(--moss); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .quiz-result .figure-num{ color:var(--moss); } }
+
+/* ---------- Glossary ---------- */
+.gloss-search{ margin-top:1.4rem; }
+.gloss-search input{
+  width:100%; max-width:26rem; padding:.7em .9em; border:1px solid var(--line); border-radius:var(--radius-sm);
+  background:var(--paper-card); color:var(--ink); font-size:.98rem;
+}
+.gloss-list{ margin-top:1.6rem; border-top:1px solid var(--line); }
+.gloss-item{ border-bottom:1px solid var(--line); padding:1em 0; }
+.gloss-item dt{ font-family:"Fraunces",serif; font-weight:600; font-size:1.05rem; }
+.gloss-item dd{ margin:.3em 0 0; color:var(--ink-soft); font-size:.94rem; }
+.gloss-empty{ color:var(--ink-soft); padding:1.4rem 0; display:none; }
+
+footer.site-footer{
+  border-top:1px solid var(--line); padding:2rem clamp(1.2rem,4vw,3.4rem) 2.6rem;
+  font-size:.85rem; color:var(--ink-soft); max-width:980px;
+}
+
+.hscroll{ overflow-x:auto; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px){
+  .shell{ grid-template-columns: 1fr; }
+  .railbar{
+    position:sticky; top:0; height:auto; padding: .8rem 1rem; z-index:50;
+    flex-direction:row; align-items:center; border-right:none; border-bottom:1px solid var(--line);
+    background:var(--paper);
+    padding-top: calc(env(safe-area-inset-top,0px) + .8rem);
+  }
+  .brand{ margin-bottom:0; margin-right:.8rem; }
+  .brand-text span{ display:none; }
+  .mainnav{ flex-direction:row; overflow-x:auto; gap:.2rem; flex:1; }
+  .mainnav a{ white-space:nowrap; border-left:none; border-bottom:3px solid transparent; padding:.6em .7em; border-radius:var(--radius-sm) var(--radius-sm) 0 0; }
+  .mainnav a[aria-current="page"]{ border-left-color:transparent; border-bottom-color:var(--moss); }
+  .mainnav .txt{ display:none; }
+  .rail-tools{ display:none; }
+  .page{ padding: 1.8rem 1.2rem 3rem; }
+  .hero{ grid-template-columns:1fr; }
+  .card-grid{ grid-template-columns:1fr; }
+  .two-col{ grid-template-columns:1fr; }
+  .greenhouse-grid{ grid-template-columns:1fr; }
+  .plan-groups{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="shell">
+  <nav class="railbar" aria-label="Site sections">
+    <a class="brand" href="#home">
+      <svg class="brand-mark" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <circle cx="15" cy="15" r="14" fill="none" stroke="var(--moss-deep)" stroke-width="1.4"/>
+        <path d="M8 17c2-6 6-9 9-9M8 17c1 3 4 4.5 7 4M8 17c3 0 5-1 6-3" fill="none" stroke="var(--moss-deep)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">Think and Grow<span>Field notes on climate change</span></span>
+    </a>
+    <ul class="mainnav" id="mainnav">
+      <li><a href="#home" data-route="home" aria-current="page"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10l7-6 7 6M5 9v7h10V9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span class="txt">Home</span></a></li>
+      <li><a href="#causes" data-route="causes"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c1.5-4 4-5 7-5s5.5 1 7 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="txt">Causes</span></a></li>
+      <li><a href="#effects" data-route="effects"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 12c2-6 4-8 6-8s4 2 6 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 15h14M4 17.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="txt">Effects</span></a></li>
+      <li><a href="#action" data-route="action"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15h12v2H4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span class="txt">Take action</span></a></li>
+      <li><a href="#quiz" data-route="quiz"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 8.2c.2-1.2 1.1-1.9 2.1-1.9 1.1 0 2 .7 2 1.8 0 1.4-2 1.5-2 3.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r=".2" stroke="currentColor" stroke-width="1.6"/></svg><span class="txt">Quiz</span></a></li>
+      <li><a href="#glossary" data-route="glossary"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.5h10v13H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 7h5M7.5 10h5M7.5 13h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span class="txt">Glossary</span></a></li>
+    </ul>
+    <div class="rail-tools">
+      <p>Display</p>
+      <div class="toolbtns">
+        <button class="toolbtn" id="fontToggle" type="button" aria-pressed="false">Aa Larger text</button>
+        <button class="toolbtn" id="themeToggle" type="button" aria-pressed="false">Dark mode</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HOME -->
+    <section class="page" id="page-home" aria-labelledby="home-h1">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Climate change · Science, Geography &amp; PSHE</p>
+          <h1 id="home-h1">One atmosphere. Every classroom's problem to understand.</h1>
+          <p class="lede">A field guide to how the climate is changing, why it's changing, and what's actually within your reach to do about it — built for lessons and for working through on your own.</p>
+          <a class="button" href="#causes">Start with the causes</a>
+          <div class="stat-row">
+            <div class="stat"><b>~1.2°C</b><span>average warming above pre-industrial levels, and rising</span></div>
+            <div class="stat"><b>4</b><span>main human causes, covered in this guide</span></div>
+            <div class="stat"><b>20+</b><span>practical actions you can start this term</span></div>
+          </div>
+          <p class="hero-note">Figures in this guide are rounded and illustrative, for classroom use. For the latest published data, check the IPCC and the Met Office.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 360 340" width="100%" role="img" aria-hidden="true">
+            <circle cx="270" cy="70" r="46" fill="var(--amber-tint)" stroke="var(--amber)" stroke-width="1.5" id="homeSun"/>
+            <g id="sunRays" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round">
+              <line x1="270" y1="8" x2="270" y2="-4"/>
+              <line x1="220" y1="30" x2="212" y2="20"/>
+              <line x1="330" y1="30" x2="338" y2="20"/>
+            </g>
+            <path d="M20 190c40-46 90-46 130-46s90 0 130 46" fill="none" stroke="var(--sky)" stroke-width="1.6" opacity=".55"/>
+            <path d="M0 240c50-30 110-30 180-30s130 0 180 30" fill="none" stroke="var(--sky)" stroke-width="1.6" opacity=".8"/>
+            <path d="M0 300c40 24 320 24 360 0v40H0z" fill="var(--moss-tint)"/>
+            <path d="M0 300c40 24 320 24 360 0" fill="none" stroke="var(--moss-deep)" stroke-width="1.6"/>
+            <g stroke="var(--moss-deep)" stroke-width="2" stroke-linecap="round">
+              <path d="M70 300v-26M70 274c-10 2-16-4-16-4M70 274c8 0 14-8 14-8"/>
+              <path d="M140 300v-34M140 266c-12 2-19-6-19-6M140 266c10 0 17-9 17-9"/>
+              <path d="M250 300v-22M250 278c-9 2-14-4-14-4M250 278c7 0 12-7 12-7"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h2>Where to start</h2>
+        <div class="card-grid">
+          <a class="route-card" href="#causes">
+            <h3>Causes</h3>
+            <p>What's actually driving the warming — and how the greenhouse effect works.</p>
+          </a>
+          <a class="route-card" href="#effects">
+            <h3>Effects</h3>
+            <p>How a warmer planet shows up in weather, oceans, ecosystems and daily life.</p>
+          </a>
+          <a class="route-card" href="#action">
+            <h3>Take action</h3>
+            <p>Build a personal action plan from things you can realistically start doing.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h2>How to use this guide</h2>
+        <div class="two-col">
+          <div class="info-card">
+            <h3>In lessons</h3>
+            <p>Each section works as a stand-alone starting point for a Science, Geography or PSHE lesson — the interactive diagrams and the accordion sections are built to talk through as a class before you dig into your own research.</p>
+          </div>
+          <div class="info-card">
+            <h3>On your own</h3>
+            <p>Work through the sections in order, try the quiz once you've read Causes and Effects, and use the glossary any time a term doesn't make sense — you don't need to read it front to back in one go.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAUSES -->
+    <section class="page" id="page-causes" aria-labelledby="causes-h1">
+      <p class="eyebrow">Causes</p>
+      <h1 id="causes-h1">What's heating the planet up</h1>
+      <p class="lede">The greenhouse effect is natural, and it's what keeps Earth warm enough to live on. The problem is that human activity has been adding far more greenhouse gas than natural processes can absorb — so more heat gets trapped than usual.</p>
+
+      <div class="greenhouse-wrap">
+        <h2 style="font-size:1.2rem;margin-bottom:.2em;">Explore the greenhouse effect</h2>
+        <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:0;">Select each part of the diagram to see what's happening at that stage.</p>
+        <div class="greenhouse-grid">
+          <div class="gh-svg-box" id="ghSvgBox">
+            <svg viewBox="0 0 400 260" width="100%" role="img" aria-label="Diagram of the greenhouse effect showing the sun, atmosphere, Earth's surface and trapped heat">
+              <circle cx="60" cy="55" r="30" fill="var(--amber-tint)" stroke="var(--amber)" stroke-width="1.5" id="part-sun" class="gh-fade"/>
+              <g id="part-sun-rays" class="gh-fade" stroke="var(--amber)" stroke-width="1.4" stroke-linecap="round">
+                <line x1="95" y1="70" x2="150" y2="150"/>
+                <line x1="110" y1="55" x2="185" y2="150"/>
+                <line x1="125" y1="40" x2="220" y2="150"/>
+              </g>
+              <path d="M10 95c60-40 320-40 380 0" fill="none" stroke="var(--sky)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round" id="part-atmosphere" class="gh-fade"/>
+              <circle cx="90" cy="88" r="3" fill="var(--sky)" id="part-atmosphere-dot" class="gh-fade"/>
+              <circle cx="180" cy="80" r="3" fill="var(--sky)" class="gh-fade gh-atm-dot"/>
+              <circle cx="270" cy="86" r="3" fill="var(--sky)" class="gh-fade gh-atm-dot"/>
+              <circle cx="330" cy="92" r="3" fill="var(--sky)" class="gh-fade gh-atm-dot"/>
+              <path d="M0 190c50 24 350 24 400 0v70H0z" fill="var(--moss-tint)" id="part-surface" class="gh-fade" stroke="var(--moss-deep)" stroke-width="1.4"/>
+              <g id="part-heat" class="gh-fade" stroke="var(--rust)" stroke-width="1.6" stroke-linecap="round">
+                <path d="M160 185c6-14 -4-20 0-32" fill="none"/>
+                <path d="M200 185c6-14 -4-20 0-32" fill="none"/>
+                <path d="M240 185c6-14 -4-20 0-32" fill="none"/>
+                <path d="M160 153l6-9M200 153l6-9M240 153l6-9" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <ul class="hotspots" id="ghHotspots">
+              <li><button class="hotspot-btn" data-part="sun" aria-pressed="true"><span class="dot" style="background:var(--amber)"></span>The sun</button></li>
+              <li><button class="hotspot-btn" data-part="atmosphere" aria-pressed="false"><span class="dot" style="background:var(--sky)"></span>Greenhouse gases</button></li>
+              <li><button class="hotspot-btn" data-part="surface" aria-pressed="false"><span class="dot" style="background:var(--moss)"></span>Earth's surface</button></li>
+              <li><button class="hotspot-btn" data-part="heat" aria-pressed="false"><span class="dot" style="background:var(--rust)"></span>Trapped heat</button></li>
+            </ul>
+            <div class="gh-panel" id="ghPanel" aria-live="polite">
+              <strong>The sun</strong>
+              Sunlight travels through the atmosphere and warms Earth's surface — this part of the system hasn't changed.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h2>The four big sources</h2>
+        <p>These account for almost all of the extra greenhouse gas that human activity adds to the atmosphere each year. Select a tab to see how each one works.</p>
+        <div class="tablist" role="tablist" aria-label="Causes of climate change">
+          <button class="tab" role="tab" id="tab-energy" aria-controls="panel-energy" aria-selected="true">Energy &amp; transport</button>
+          <button class="tab" role="tab" id="tab-forests" aria-controls="panel-forests" aria-selected="false" tabindex="-1">Deforestation</button>
+          <button class="tab" role="tab" id="tab-farming" aria-controls="panel-farming" aria-selected="false" tabindex="-1">Agriculture</button>
+          <button class="tab" role="tab" id="tab-industry" aria-controls="panel-industry" aria-selected="false" tabindex="-1">Industry</button>
+        </div>
+        <div class="tabpanel is-active" role="tabpanel" id="panel-energy" aria-labelledby="tab-energy">
+          <p class="stat-mini">The single largest source</p>
+          <p>Burning coal, oil and gas for electricity, heating and transport releases carbon dioxide that had been locked away for millions of years. Petrol and diesel cars, gas boilers and coal or gas power stations are the everyday examples most people in the UK come into contact with directly.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-forests" aria-labelledby="tab-forests" hidden>
+          <p class="stat-mini">Removes a natural carbon store</p>
+          <p>Trees absorb CO2 as they grow. Clearing forests — often to create farmland — releases the carbon they were storing and removes a natural system that would otherwise keep absorbing more. Large-scale deforestation is concentrated in tropical regions such as the Amazon and parts of Southeast Asia.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-farming" aria-labelledby="tab-farming" hidden>
+          <p class="stat-mini">A major source of methane</p>
+          <p>Cattle and sheep produce methane as they digest food, and flooded rice paddies produce it too. Fertilisers used on crops release nitrous oxide. Both gases trap significantly more heat than CO2 over the short term, even though they're released in smaller quantities.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-industry" aria-labelledby="tab-industry" hidden>
+          <p class="stat-mini">Emissions built into materials</p>
+          <p>Making cement, steel and chemicals releases CO2 both from the energy used and, for cement in particular, from the chemical process itself. Because these materials are everywhere in construction, industrial emissions are harder to design out than most people expect.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EFFECTS -->
+    <section class="page" id="page-effects" aria-labelledby="effects-h1">
+      <p class="eyebrow">Effects</p>
+      <h1 id="effects-h1">How a warmer world shows up</h1>
+      <p class="lede">A change measured in fractions of a degree doesn't sound dramatic — but small shifts in average temperature drive much bigger changes in weather, ice, oceans and ecosystems.</p>
+
+      <div class="timeline-box">
+        <h2 style="font-size:1.15rem;">Global temperature, decade by decade</h2>
+        <label for="tlRange" style="display:block;font-size:.88rem;color:var(--ink-soft);margin-bottom:.8rem;">Drag the slider to move through time. Figures are approximate, relative to late-1800s levels.</label>
+        <div class="timeline-readout">
+          <b id="tlTemp">+0.0°C</b><span id="tlYear">1900s</span>
+        </div>
+        <input type="range" id="tlRange" min="0" max="12" value="0" step="1" aria-describedby="tlDesc">
+        <div class="timeline-scale"><span>1900s</span><span>1960s</span><span>2020s</span><span>2100 (projected)</span></div>
+        <div class="timeline-bars" id="tlBars" aria-hidden="true"></div>
+        <p class="timeline-desc" id="tlDesc">Global average temperature was close to its long-term baseline in the early 1900s, before large-scale industrial emissions took hold.</p>
+      </div>
+
+      <div class="section-block">
+        <h2>Effects around the world</h2>
+        <div class="accordion" id="effectsAccordion">
+          <div class="acc-item">
+            <h3><button class="acc-trigger" aria-expanded="true" aria-controls="acc-ice">Ice, oceans and sea levels<span class="plus" aria-hidden="true"></span></button></h3>
+            <div class="acc-panel is-open" id="acc-ice">
+              <p>Glaciers and polar ice sheets are melting faster than they're being replaced, and warmer water expands, both of which raise sea levels. Low-lying coastal towns and cities — including parts of the UK's east coast — face a growing risk of flooding.</p>
+              <p>Oceans also absorb extra CO2, which makes seawater more acidic and makes it harder for coral and shellfish to build their skeletons and shells.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <h3><button class="acc-trigger" aria-expanded="false" aria-controls="acc-weather">Weather and extreme events<span class="plus" aria-hidden="true"></span></button></h3>
+            <div class="acc-panel" id="acc-weather">
+              <p>Heatwaves, heavy rainfall, droughts and storms are becoming more frequent and more intense in many regions. A warmer atmosphere holds more moisture, which can mean heavier downpours and flash flooding — something the UK has seen more of in recent winters.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <h3><button class="acc-trigger" aria-expanded="false" aria-controls="acc-nature">Ecosystems and biodiversity<span class="plus" aria-hidden="true"></span></button></h3>
+            <div class="acc-panel" id="acc-nature">
+              <p>Species are shifting where and when they breed, migrate and flower as temperatures change, but not all species can move or adapt fast enough. Coral reefs, Arctic habitats and many UK wildflower and insect populations are especially sensitive to these shifts.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <h3><button class="acc-trigger" aria-expanded="false" aria-controls="acc-people">People, food and health<span class="plus" aria-hidden="true"></span></button></h3>
+            <div class="acc-panel" id="acc-people">
+              <p>Changing rainfall and rising temperatures affect crop yields and water supplies, which can drive food insecurity and migration. Heatwaves also carry direct health risks, particularly for older people and those with existing health conditions — and extreme weather brings real economic costs to households and insurers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION -->
+    <section class="page" id="page-action" aria-labelledby="action-h1">
+      <p class="eyebrow">Take action</p>
+      <h1 id="action-h1">Build your action plan</h1>
+      <p class="lede">Individual choices don't replace the need for bigger policy and industry change — but they add up, build habits, and are genuinely within your control. Tick anything you already do or want to start, and see it add up below.</p>
+
+      <div class="plan-box">
+        <div class="plan-header">
+          <p class="plan-score">You've picked <b id="planCount">0</b> of <span id="planTotal">16</span> actions</p>
+          <button class="button secondary plan-reset" id="planReset" type="button">Clear selections</button>
+        </div>
+        <div class="plan-groups" id="planGroups">
+          <div class="plan-group">
+            <h3>At home</h3>
+            <label class="plan-item"><input type="checkbox" data-plan> Switch off lights and standby devices when not in use</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Ask about switching to LED bulbs</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Have one or two more meat-free meals a week</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Take shorter showers and fix dripping taps</label>
+          </div>
+          <div class="plan-group">
+            <h3>Getting around</h3>
+            <label class="plan-item"><input type="checkbox" data-plan> Walk or cycle for short local journeys</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Use the bus or train instead of a car lift when you can</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Car-share journeys with friends or family</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Combine errands into one trip instead of several</label>
+          </div>
+          <div class="plan-group">
+            <h3>At school</h3>
+            <label class="plan-item"><input type="checkbox" data-plan> Join or start an eco-club or green council</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Set up recycling or composting where it's missing</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Run a lesson or assembly on a climate topic</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Organise a litter pick or planting day</label>
+          </div>
+          <div class="plan-group">
+            <h3>In the community</h3>
+            <label class="plan-item"><input type="checkbox" data-plan> Buy seasonal, local food where possible</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Repair, reuse or swap items instead of buying new</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Write to a local MP or councillor about a climate issue</label>
+            <label class="plan-item"><input type="checkbox" data-plan> Share what you learn with family, using reliable sources</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block info-card" style="margin-top:2.2rem;">
+        <h3>A note on misinformation</h3>
+        <p>Climate change is well established by decades of scientific evidence, but you'll still see confident-sounding claims online that contradict it. When you're researching, favour established scientific bodies (like the IPCC, the Met Office, or NASA) over social media posts, and check whether a claim is backed by a cited study.</p>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="page" id="page-quiz" aria-labelledby="quiz-h1">
+      <p class="eyebrow">Check your understanding</p>
+      <h1 id="quiz-h1">Quick quiz</h1>
+      <p class="lede">Six questions covering causes, effects and action. You'll get an explanation after each answer.</p>
+
+      <div class="quiz-box" id="quizBox">
+        <div id="quizLive" aria-live="polite">
+          <p class="quiz-progress" id="quizProgress">Question 1 of 6</p>
+          <p class="quiz-q" id="quizQuestion"></p>
+          <ul class="quiz-choices" id="quizChoices"></ul>
+          <div class="quiz-feedback" id="quizFeedback" hidden></div>
+        </div>
+        <div class="quiz-actions">
+          <button class="button" id="quizNext" type="button" hidden>Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section class="page" id="page-glossary" aria-labelledby="glossary-h1">
+      <p class="eyebrow">Reference</p>
+      <h1 id="glossary-h1">Glossary</h1>
+      <p class="lede">Key terms used across this guide, in plain language.</p>
+      <div class="gloss-search">
+        <label for="glossSearch" style="display:block;font-weight:600;margin-bottom:.4em;font-size:.92rem;">Filter terms</label>
+        <input type="text" id="glossSearch" placeholder="Start typing, e.g. “carbon”">
+      </div>
+      <dl class="gloss-list" id="glossList"></dl>
+      <p class="gloss-empty" id="glossEmpty">No terms match that search.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p><strong>Think and Grow</strong> — educational resources for secondary schools and colleges. This is a prototype learning resource for Science, Geography and PSHE. Figures are rounded for teaching purposes; for current data, consult the IPCC, the Met Office or your exam board's specification.</p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Routing ---------- */
+  var routes = ["home","causes","effects","action","quiz","glossary"];
+  var navLinks = document.querySelectorAll('.mainnav a[data-route]');
+  var pages = {};
+  routes.forEach(function(r){ pages[r] = document.getElementById('page-'+r); });
+
+  function showRoute(route, moveFocus){
+    if(routes.indexOf(route) === -1) route = "home";
+    routes.forEach(function(r){
+      pages[r].classList.toggle('is-active', r === route);
+    });
+    navLinks.forEach(function(a){
+      if(a.getAttribute('data-route') === route){ a.setAttribute('aria-current','page'); }
+      else { a.removeAttribute('aria-current'); }
+    });
+    if(moveFocus){
+      var h1 = pages[route].querySelector('h1');
+      if(h1){ h1.setAttribute('tabindex','-1'); h1.focus(); }
+    }
+  }
+
+  function routeFromHash(){
+    return (location.hash || '#home').replace('#','');
+  }
+
+  window.addEventListener('hashchange', function(){ showRoute(routeFromHash(), true); });
+  showRoute(routeFromHash(), false);
+
+  /* ---------- Display tools: font size + theme ---------- */
+  var fontBtn = document.getElementById('fontToggle');
+  var themeBtn = document.getElementById('themeToggle');
+
+  function safeGet(key){ try { return localStorage.getItem(key); } catch(e){ return null; } }
+  function safeSet(key,val){ try { localStorage.setItem(key,val); } catch(e){} }
+
+  var fontLarge = safeGet('tg-fontsize') === 'large';
+  document.body.dataset.fontsize = fontLarge ? 'large' : 'normal';
+  fontBtn.setAttribute('aria-pressed', String(fontLarge));
+
+  fontBtn.addEventListener('click', function(){
+    fontLarge = !fontLarge;
+    document.body.dataset.fontsize = fontLarge ? 'large' : 'normal';
+    fontBtn.setAttribute('aria-pressed', String(fontLarge));
+    safeSet('tg-fontsize', fontLarge ? 'large' : 'normal');
+  });
+
+  var savedTheme = safeGet('tg-theme');
+  if(savedTheme === 'dark' || savedTheme === 'light'){
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeBtn.setAttribute('aria-pressed', String(savedTheme === 'dark'));
+  }
+  themeBtn.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    themeBtn.setAttribute('aria-pressed', String(next === 'dark'));
+    safeSet('tg-theme', next);
+  });
+
+  /* ---------- Greenhouse hotspots ---------- */
+  var ghInfo = {
+    sun: {title:"The sun", body:"Sunlight travels through the atmosphere and warms Earth's surface — this part of the system hasn't changed."},
+    atmosphere: {title:"Greenhouse gases", body:"CO2, methane and other gases in the atmosphere trap some of that heat instead of letting it all escape to space. Human activity has been adding far more of these gases than natural processes remove."},
+    surface: {title:"Earth's surface", body:"Land and oceans absorb energy from the sun, warm up, and then radiate that energy back out as heat."},
+    heat: {title:"Trapped heat", body:"With more greenhouse gases in the atmosphere, more of that outgoing heat gets trapped and reflected back down — warming the surface further. This is the enhanced greenhouse effect."}
+  };
+  var ghButtons = document.querySelectorAll('.hotspot-btn');
+  var ghPanel = document.getElementById('ghPanel');
+  var ghParts = {
+    sun: [document.getElementById('part-sun'), document.getElementById('part-sun-rays')],
+    atmosphere: [document.getElementById('part-atmosphere'), document.getElementById('part-atmosphere-dot')].concat(Array.prototype.slice.call(document.querySelectorAll('.gh-atm-dot'))),
+    surface: [document.getElementById('part-surface')],
+    heat: [document.getElementById('part-heat')]
+  };
+  function setGhPart(part){
+    ghButtons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.part === part)); });
+    Object.keys(ghParts).forEach(function(k){
+      ghParts[k].forEach(function(el){ if(el){ el.classList.toggle('gh-active', k===part); } });
+    });
+    var info = ghInfo[part];
+    ghPanel.innerHTML = '<strong>'+info.title+'</strong>'+info.body;
+  }
+  ghButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){ setGhPart(btn.dataset.part); });
+  });
+  setGhPart('sun');
+
+  /* ---------- Tabs ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#page-causes .tab'));
+  function selectTab(tab){
+    tabs.forEach(function(t){
+      var selected = t === tab;
+      t.setAttribute('aria-selected', String(selected));
+      t.tabIndex = selected ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      panel.hidden = !selected;
+      panel.classList.toggle('is-active', selected);
+    });
+    tab.focus();
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ selectTab(tab); });
+    tab.addEventListener('keydown', function(e){
+      var idx = i;
+      if(e.key === 'ArrowRight'){ idx = (i+1) % tabs.length; selectTab(tabs[idx]); e.preventDefault(); }
+      if(e.key === 'ArrowLeft'){ idx = (i-1+tabs.length) % tabs.length; selectTab(tabs[idx]); e.preventDefault(); }
+    });
+  });
+
+  /* ---------- Timeline slider ---------- */
+  var tlData = [
+    {year:"1900s", temp:0.0, desc:"Global average temperature was close to its long-term baseline in the early 1900s, before large-scale industrial emissions took hold."},
+    {year:"1920s", temp:0.1, desc:"Warming was still minimal in the early twentieth century."},
+    {year:"1940s", temp:0.2, desc:"A slight rise, alongside growing industrial output worldwide."},
+    {year:"1960s", temp:0.1, desc:"Global temperatures briefly plateaued, partly due to aerosol pollution reflecting sunlight."},
+    {year:"1980s", temp:0.3, desc:"Warming resumed clearly as greenhouse gas emissions kept climbing."},
+    {year:"1990s", temp:0.5, desc:"The 1990s were warmer than any decade on record up to that point."},
+    {year:"2000s", temp:0.6, desc:"Nine of the ten warmest years on record (at the time) occurred in this decade."},
+    {year:"2010s", temp:0.9, desc:"Extreme heat events became noticeably more frequent across many regions."},
+    {year:"2020s", temp:1.2, desc:"Recent years have repeatedly ranked among the warmest ever recorded, with more frequent heatwaves and heavy rainfall events."},
+    {year:"2030s (projected)", temp:1.4, desc:"Projections vary by emissions scenario — this range assumes only modest reductions in global emissions."},
+    {year:"2050s (projected)", temp:1.8, desc:"Under a moderate-emissions pathway, warming continues well past today's levels."},
+    {year:"2080s (projected)", temp:2.3, desc:"Higher-emissions pathways could see warming approach or exceed 2°C well before the end of the century."},
+    {year:"2100 (projected)", temp:2.7, desc:"Long-range projections span a wide range depending on how quickly global emissions fall — this figure assumes limited action."}
+  ];
+  var tlRange = document.getElementById('tlRange');
+  var tlTemp = document.getElementById('tlTemp');
+  var tlYear = document.getElementById('tlYear');
+  var tlDesc = document.getElementById('tlDesc');
+  var tlBars = document.getElementById('tlBars');
+  tlData.forEach(function(){
+    var bar = document.createElement('i');
+    tlBars.appendChild(bar);
+  });
+  var barEls = tlBars.children;
+  function renderTimeline(i){
+    var d = tlData[i];
+    tlTemp.textContent = (d.temp>=0?'+':'') + d.temp.toFixed(1) + '°C';
+    tlYear.textContent = d.year;
+    tlDesc.textContent = d.desc;
+    var maxTemp = 2.7;
+    for(var j=0;j<barEls.length;j++){
+      var h = Math.max(6, (tlData[j].temp/maxTemp)*66);
+      barEls[j].style.height = h+'px';
+      barEls[j].classList.toggle('on', j<=i);
+    }
+  }
+  tlRange.addEventListener('input', function(){ renderTimeline(parseInt(tlRange.value,10)); });
+  renderTimeline(0);
+
+  /* ---------- Accordion ---------- */
+  document.querySelectorAll('.acc-trigger').forEach(function(trigger){
+    trigger.addEventListener('click', function(){
+      var expanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      var panel = document.getElementById(trigger.getAttribute('aria-controls'));
+      panel.classList.toggle('is-open', !expanded);
+    });
+  });
+
+  /* ---------- Action plan checklist ---------- */
+  var planBoxes = Array.prototype.slice.call(document.querySelectorAll('[data-plan]'));
+  var planCount = document.getElementById('planCount');
+  document.getElementById('planTotal').textContent = planBoxes.length;
+
+  function planKey(el){
+    var group = el.closest('.plan-group').querySelector('h3').textContent;
+    return group + '|' + el.closest('.plan-item').textContent.trim();
+  }
+  var savedPlan = [];
+  try { savedPlan = JSON.parse(safeGet('tg-plan') || '[]'); } catch(e){ savedPlan = []; }
+  planBoxes.forEach(function(box){
+    if(savedPlan.indexOf(planKey(box)) !== -1){ box.checked = true; }
+  });
+  function updatePlanCount(){
+    var checked = planBoxes.filter(function(b){ return b.checked; });
+    planCount.textContent = checked.length;
+    safeSet('tg-plan', JSON.stringify(checked.map(planKey)));
+  }
+  planBoxes.forEach(function(box){ box.addEventListener('change', updatePlanCount); });
+  updatePlanCount();
+  document.getElementById('planReset').addEventListener('click', function(){
+    planBoxes.forEach(function(b){ b.checked = false; });
+    updatePlanCount();
+  });
+
+  /* ---------- Quiz ---------- */
+  var quizData = [
+    {
+      q: "Which of these is the single largest source of human-caused greenhouse gas emissions?",
+      choices: ["Burning fossil fuels for energy and transport", "Rice farming", "Cement production", "Household waste"],
+      correct: 0,
+      explain: "Burning coal, oil and gas for electricity, heat and transport releases the largest share of human-caused CO2 emissions worldwide."
+    },
+    {
+      q: "Why does deforestation contribute to climate change?",
+      choices: ["It makes the soil less fertile", "It removes a natural store that absorbs CO2, and releases stored carbon", "It reduces rainfall in cities", "It increases methane from soil bacteria"],
+      correct: 1,
+      explain: "Trees absorb CO2 as they grow. Clearing them releases the carbon they stored and removes a system that would otherwise keep absorbing more."
+    },
+    {
+      q: "Which gas do cattle and rice paddies produce large amounts of?",
+      choices: ["Oxygen", "Nitrogen", "Methane", "Ozone"],
+      correct: 2,
+      explain: "Cattle digestion and flooded rice paddies are major sources of methane, a greenhouse gas that traps significantly more heat than CO2 in the short term."
+    },
+    {
+      q: "What happens to sea levels as glaciers and ice sheets melt and oceans warm?",
+      choices: ["They fall, because ice turns to water vapour", "They stay the same", "They rise, from meltwater and thermal expansion", "They only rise near the poles"],
+      correct: 2,
+      explain: "Melting ice adds water to the oceans, and warmer water also expands — both effects raise sea levels globally."
+    },
+    {
+      q: "Which of these is a practical action within most students' control?",
+      choices: ["Setting national energy policy", "Reducing food waste and choosing more meat-free meals", "Rerouting international shipping", "Regulating factory emissions directly"],
+      correct: 1,
+      explain: "Everyday choices — like reducing food waste, walking or cycling for short trips, and eating fewer meat-heavy meals — are realistic actions individuals can control, alongside pushing for wider policy change."
+    },
+    {
+      q: "When researching climate claims online, what's the best approach?",
+      choices: ["Trust whichever post has the most likes", "Check whether it's backed by established scientific bodies and cited evidence", "Assume all sources are equally reliable", "Avoid checking sources to save time"],
+      correct: 1,
+      explain: "Favour established scientific bodies like the IPCC, the Met Office or NASA, and check whether claims are backed by cited, peer-reviewed evidence."
+    }
+  ];
+  var quizIdx = 0, quizScore = 0;
+  var quizProgress = document.getElementById('quizProgress');
+  var quizQuestion = document.getElementById('quizQuestion');
+  var quizChoices = document.getElementById('quizChoices');
+  var quizFeedback = document.getElementById('quizFeedback');
+  var quizNext = document.getElementById('quizNext');
+  var quizLive = document.getElementById('quizLive');
+
+  function renderQuiz(){
+    var item = quizData[quizIdx];
+    quizProgress.textContent = "Question " + (quizIdx+1) + " of " + quizData.length;
+    quizQuestion.textContent = item.q;
+    quizChoices.innerHTML = "";
+    quizFeedback.hidden = true;
+    quizFeedback.innerHTML = "";
+    quizNext.hidden = true;
+    item.choices.forEach(function(choiceText, i){
+      var li = document.createElement('li');
+      var btn = document.createElement('button');
+      btn.className = 'quiz-choice';
+      btn.type = 'button';
+      btn.textContent = choiceText;
+      btn.addEventListener('click', function(){ answerQuiz(i, btn); });
+      li.appendChild(btn);
+      quizChoices.appendChild(li);
+    });
+  }
+
+  function answerQuiz(i, btnEl){
+    var item = quizData[quizIdx];
+    var buttons = quizChoices.querySelectorAll('.quiz-choice');
+    buttons.forEach(function(b){ b.disabled = true; });
+    var correct = i === item.correct;
+    if(correct) quizScore++;
+    btnEl.classList.add(correct ? 'correct' : 'incorrect');
+    if(!correct){ buttons[item.correct].classList.add('correct'); }
+    quizFeedback.hidden = false;
+    quizFeedback.innerHTML = '<span class="verdict">' + (correct ? "That's right." : "Not quite.") + '</span>' + item.explain;
+    quizNext.hidden = false;
+    quizNext.textContent = (quizIdx === quizData.length - 1) ? "See your score" : "Next question";
+    quizNext.focus();
+  }
+
+  quizNext.addEventListener('click', function(){
+    quizIdx++;
+    if(quizIdx >= quizData.length){
+      quizLive.innerHTML = '<div class="quiz-result"><p class="eyebrow">Quiz complete</p><span class="figure-num">' + quizScore + ' / ' + quizData.length + '</span><p>Nice work — head back to Causes or Effects to revisit anything you were not sure on.</p></div>';
+      quizNext.hidden = true;
+      var retry = document.createElement('button');
+      retry.className = 'button secondary';
+      retry.type = 'button';
+      retry.textContent = 'Try again';
+      retry.addEventListener('click', function(){
+        quizIdx = 0; quizScore = 0;
+        quizLive.innerHTML = '<p class="quiz-progress" id="quizProgress"></p><p class="quiz-q" id="quizQuestion"></p><ul class="quiz-choices" id="quizChoices"></ul><div class="quiz-feedback" id="quizFeedback" hidden></div>';
+        quizProgress = document.getElementById('quizProgress');
+        quizQuestion = document.getElementById('quizQuestion');
+        quizChoices = document.getElementById('quizChoices');
+        quizFeedback = document.getElementById('quizFeedback');
+        retry.remove();
+        renderQuiz();
+      });
+      document.querySelector('.quiz-actions').appendChild(retry);
+      return;
+    }
+    renderQuiz();
+  });
+  renderQuiz();
+
+  /* ---------- Glossary ---------- */
+  var glossary = [
+    {term:"Greenhouse gas", def:"A gas — such as carbon dioxide, methane or nitrous oxide — that traps heat in the atmosphere."},
+    {term:"Carbon footprint", def:"The total amount of greenhouse gas emissions caused by a person, product or activity."},
+    {term:"Fossil fuel", def:"Coal, oil or natural gas formed from ancient organic matter; burning them releases stored carbon as CO2."},
+    {term:"Renewable energy", def:"Energy from sources that naturally replenish, such as wind, solar and hydroelectric power."},
+    {term:"Biodiversity", def:"The variety of plant and animal life in a particular habitat or across the planet."},
+    {term:"Sea-level rise", def:"The increase in average ocean height, driven by melting ice and the thermal expansion of warmer water."},
+    {term:"IPCC", def:"The Intergovernmental Panel on Climate Change — the United Nations body that assesses and reports on climate science."},
+    {term:"Net zero", def:"A state where any greenhouse gas emissions are balanced out by an equivalent amount removed from the atmosphere."},
+    {term:"Carbon sequestration", def:"The process of capturing and storing carbon dioxide, for example in trees, soil or underground storage."},
+    {term:"Climate vs weather", def:"Weather is the day-to-day conditions in one place; climate is the long-term average pattern of weather over decades."}
+  ];
+  var glossList = document.getElementById('glossList');
+  var glossEmpty = document.getElementById('glossEmpty');
+  function renderGlossary(filter){
+    glossList.innerHTML = "";
+    var f = (filter||"").trim().toLowerCase();
+    var shown = 0;
+    glossary.forEach(function(g){
+      if(f && g.term.toLowerCase().indexOf(f) === -1 && g.def.toLowerCase().indexOf(f) === -1) return;
+      shown++;
+      var wrap = document.createElement('div');
+      wrap.className = 'gloss-item';
+      var dt = document.createElement('dt');
+      dt.textContent = g.term;
+      var dd = document.createElement('dd');
+      dd.textContent = g.def;
+      wrap.appendChild(dt); wrap.appendChild(dd);
+      glossList.appendChild(wrap);
+    });
+    glossEmpty.style.display = shown === 0 ? 'block' : 'none';
+  }
+  document.getElementById('glossSearch').addEventListener('input', function(e){
+    renderGlossary(e.target.value);
+  });
+  renderGlossary("");
+
+})();
+</script>
+</body>
+</html>
